@@ -1,3 +1,13 @@
+ExportAsFixedFormat(Type,
+    Filename,
+    Quality,
+    IncludeDocProperties,
+    IgnorePrintAreas,
+    From,
+    To,
+    OpenAfterPublish,
+    FixedFormatExtClassPtr)
+
 Example 1 – export active worksheet to PDF
 Sub exportPDF()
     ActiveSheet.ExportAsFixedFormat _
