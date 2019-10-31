@@ -1,0 +1,58 @@
+Example 1 – export active worksheet to PDF
+Sub exportPDF()
+    ActiveSheet.ExportAsFixedFormat _
+    Type:=xlTypePDF, _
+    Filename:=ActiveSheet.Name & ".pdf", _
+    Quality:=xlQualityStandard, _
+    IncludeDocProperties:=True, _
+    IgnorePrintAreas:=No, _
+    OpenAfterPublish:=True
+End Sub
+
+Example 2 – Export workbook / all worksheets to one PDF
+Replace ActiveSheet with ActiveWorkbook.
+Sub exportPDF2()
+    ActiveWorkbook.ExportAsFixedFormat _
+    Type:=xlTypePDF, _
+    Filename:=ActiveWorkbook.Name & ".pdf", _
+    Quality:=xlQualityStandard, _
+    IncludeDocProperties:=True, _
+    IgnorePrintAreas:=No, _
+    OpenAfterPublish:=True
+End Sub
+
+Example 3 – Export all worksheets to separate PDF
+Sub exportPDF3()
+    For Each sht In ActiveWorkbook.Sheets
+        On Error GoTo errorhandler
+        sht.ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        Filename:=sht.Name & ".pdf", _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        IgnorePrintAreas:=No, _
+        OpenAfterPublish:=True
+    Next
+errorhandler:
+End Sub
+
+Example 4 – Export specific worksheets to PDF
+Sub exportPDF4()
+        ActiveWorkbook.Sheets(Array("Sheet1", "Sheet2", "Sheet3", "Sheet5", "Sheet8", "Sheet12")).Select
+        ActiveSheet.ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        Filename:="FileA.pdf", _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        IgnorePrintAreas:=No, _
+        OpenAfterPublish:=True
+        
+        ActiveWorkbook.Sheets(Array("Sheet1", "Sheet2", "Sheet3", "Sheet6", "Sheet9", "Sheet13")).Select
+        ActiveSheet.ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        Filename:="FileB.pdf", _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        IgnorePrintAreas:=No, _
+        OpenAfterPublish:=True
+End Sub
